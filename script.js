@@ -15318,7 +15318,7 @@ document.querySelectorAll("thead th").forEach((th) =>
 			sortDir = k === "company" || k === "title" ? 1 : -1;
 		}
 		render();
-	})
+	}),
 );
 Object.values(els).forEach((el) => el.addEventListener("input", render));
 document.getElementById("reset").addEventListener("click", () => {
@@ -15328,4 +15328,28 @@ document.getElementById("reset").addEventListener("click", () => {
 	sortDir = -1;
 	render();
 });
+
+/* ── mobile sort controls ── */
+const mobileSortSelect = document.getElementById("mobileSortSelect");
+const mobileSortControls = document.getElementById("mobileSortControls");
+
+function updateMobileSortVisibility() {
+	mobileSortControls.style.display =
+		window.innerWidth <= 480 ? "flex" : "none";
+}
+
+mobileSortSelect.addEventListener("change", (e) => {
+	const newKey = e.target.value;
+	if (newKey === sortKey) {
+		sortDir *= -1;
+	} else {
+		sortKey = newKey;
+		sortDir = newKey === "company" || newKey === "title" ? 1 : -1;
+	}
+	render();
+});
+
+window.addEventListener("resize", updateMobileSortVisibility);
+updateMobileSortVisibility();
+
 render();
