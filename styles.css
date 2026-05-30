@@ -591,6 +591,27 @@ tbody tr {
 		gap: 4px;
 	}
 
+	/* Mobile sort controls */
+	.sort-controls {
+		display: flex;
+		gap: 8px;
+		margin-bottom: 12px;
+		font-size: 11px;
+	}
+	.sort-controls label {
+		font-weight: 600;
+		color: var(--ink2);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.sort-controls select {
+		flex: 1;
+		font-size: 11px;
+		padding: 6px 8px;
+		border: 1px solid var(--line);
+		background: var(--paper2);
+	}
+
 	thead {
 		display: none;
 	}
